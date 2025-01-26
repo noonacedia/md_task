@@ -1,6 +1,7 @@
-from core.models import CreateUpdateMixinModel
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+from src.core.models import CreateUpdateMixinModel
 
 
 class Patient(CreateUpdateMixinModel):
@@ -16,7 +17,7 @@ class Diagnosis(CreateUpdateMixinModel):
         to=Patient,
         on_delete=models.CASCADE,
         related_name='diagnoses',
-        verbose_name=_('Patient')
+        verbose_name=_('Patient'),
     )
 
     class Meta:

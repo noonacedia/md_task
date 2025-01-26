@@ -2,8 +2,8 @@ from rest_framework import status
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 
-from task_2.serializers import JsonFileInputSerializer
-from task_2.service import GoodsCounter
+from src.task_2.serializers import JsonFileInputSerializer
+from src.task_2.service import GoodsCounter
 
 
 class GetJsonFileCalculation(CreateAPIView):

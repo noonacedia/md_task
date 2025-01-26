@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from patients.models import Diagnosis, Patient
+from src.patients.models import Diagnosis, Patient
 
 
 class DiagnosisSerializer(serializers.ModelSerializer):

@@ -1,10 +1,11 @@
 import os
 from pathlib import Path
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'verysecretverykey')
 
@@ -22,8 +23,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
-    'patients',
-    'users',
+    'src.patients',
+    'src.users',
 ]
 
 MIDDLEWARE = [
@@ -36,7 +37,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'core.urls'
+ROOT_URLCONF = 'src.core.urls'
 
 TEMPLATES = [
     {
@@ -54,7 +55,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'core.wsgi.application'
+WSGI_APPLICATION = 'src.core.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -64,7 +65,7 @@ DATABASES = {
         'NAME': os.getenv('POSTGRES_DB', 'db'),
         'USER': os.getenv('POSTGRES_USER', 'user'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'password'),
-    }
+    },
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -97,5 +98,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    )
+    ),
 }

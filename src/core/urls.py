@@ -11,6 +11,6 @@ urlpatterns = [
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    path('patients/', include('patients.urls')),
-    path('parse-json/', include('task_2.urls')),
+    path('patients/', include('src.patients.urls')),
+    path('parse-json/', include('src.task_2.urls')),
 ]

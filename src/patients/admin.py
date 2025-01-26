@@ -1,5 +1,6 @@
 from django.contrib import admin
-from patients.models import Patient
+
+from src.patients.models import Patient
 
 
 class PatientAdmin(admin.ModelAdmin):

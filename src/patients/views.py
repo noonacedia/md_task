@@ -1,9 +1,9 @@
 from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
-from patients.models import Patient
-from patients.permissions import IsDoctor
-from patients.serializers import PatientsListSerializer
+from src.patients.models import Patient
+from src.patients.permissions import IsDoctor
+from src.patients.serializers import PatientsListSerializer
 
 
 class GetPatients(generics.ListAPIView):
