@@ -12,4 +12,5 @@ urlpatterns = [
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     path('patients/', include('patients.urls')),
+    path('parse-json/', include('task_2.urls')),
 ]
