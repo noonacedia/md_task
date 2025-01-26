@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:latest
+    container_name: db
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"]
+
+  web:
+      restart: always
+      container_name: web
+      build:
+        context: ../
+        dockerfile: ./infra/Dockerfile
+      command: ./infra/start.sh
+      volumes:
+        - ..:/code
+        - /var/run/docker.sock:/var/run/docker.sock
+      ports:
+        - "8000:8000"
+      env_file:
+        - ./.env
+      depends_on:
+        db:
+          condition: service_healthy
+
+volumes:
+  dbdata:
+    driver: local
