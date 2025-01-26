@@ -1,4 +1,3 @@
-from collections import defaultdict
 import msgspec
 
 from django.core.files.uploadedfile import TemporaryUploadedFile
@@ -18,9 +17,10 @@ class GoodsCounter:
         parsed_file = msgspec.json.decode(file.read())
         file.close()
         met_ids = set()
-        result = defaultdict(int)
+        result = {}
         for d in parsed_file:
             if d['id'] not in met_ids:
                 met_ids.add(d['id'])
-                result[d['category']] += d['price']
+                result.setdefault(d['category'], {'amount': 0, 'sum': 0})['amount'] += 1
+                result.setdefault(d['category'], {'amount': 0, 'sum': 0})['sum'] += d['price']
         return result
